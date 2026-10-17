@@ -1,0 +1,749 @@
+
+/* ========================================
+   1. WARNA DAN PENGATURAN DASAR
+======================================== */
+:root {
+    --ungu-tua: #2b0614;
+    --ungu: #800020;
+    --ungu-muda: #b33a5c;
+    --lavender: #f0c4d0;
+    --teks: #351722;
+    --redup: #806a73;
+    --putih: #ffffff;
+    --emas: #e8c779;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: var(--teks);
+    background:
+        radial-gradient(circle at 10% 15%, rgba(179, 58, 92, 0.12), transparent 28%),
+        radial-gradient(circle at 90% 80%, rgba(232, 199, 121, 0.15), transparent 30%),
+        #fff8f5;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ========================================
+   2. CAHAYA BACKGROUND BERGERAK
+======================================== */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    top: 5%;
+    left: -100px;
+    background: #b33a5c;
+    animation: cahayaKiri 12s ease-in-out infinite alternate;
+}
+
+body::after {
+    right: -100px;
+    bottom: 5%;
+    background: #e8c779;
+    animation: cahayaKanan 15s ease-in-out infinite alternate;
+}
+
+@keyframes cahayaKiri {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(120px, 100px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(40px, 200px) scale(0.9);
+    }
+}
+
+@keyframes cahayaKanan {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-100px, -80px) scale(1.15);
+    }
+
+    100% {
+        transform: translate(-40px, -160px) scale(0.9);
+    }
+}
+
+/* ========================================
+   3. NAVIGASI
+======================================== */
+.nav-ungu {
+    background: linear-gradient(110deg, #2b0614, #65001c, #9c2346);
+    box-shadow: 0 5px 20px rgba(40, 15, 30, 0.25);
+    padding: 14px 0;
+}
+
+.navbar-brand {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.navbar-brand:hover {
+    color: var(--emas);
+}
+
+.navbar .nav-link {
+    color: #f8e7ed;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--emas);
+    font-weight: 700;
+}
+
+/* ========================================
+   4. BERANDA DAN BACKGROUND UTAMA
+======================================== */
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 85px 0;
+    color: white;
+
+    background:
+        radial-gradient(circle at 80% 20%, rgba(220, 120, 150, 0.5), transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(128, 0, 32, 0.8), transparent 35%),
+        linear-gradient(125deg, #2b0614, #65001c, #a3294d);
+}
+
+/* Lingkaran dekorasi */
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hero::before {
+    width: 300px;
+    height: 300px;
+    right: -70px;
+    top: -70px;
+    animation: putarLingkaran 18s linear infinite;
+}
+
+.hero::after {
+    width: 190px;
+    height: 190px;
+    left: 5%;
+    bottom: -100px;
+    animation: lingkaranMelayang 7s ease-in-out infinite;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    line-height: 1.2;
+}
+
+.hero p {
+    color: #f8e4e9;
+}
+
+@keyframes putarLingkaran {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.08);
+    }
+}
+
+@keyframes lingkaranMelayang {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-35px);
+    }
+}
+
+/* Label kecil pada beranda */
+.label-ungu {
+    display: inline-block;
+    color: var(--ungu);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero .label-ungu {
+    color: #f5dce4;
+}
+
+/* Tulisan gradasi */
+.teks-gradasi {
+    background: linear-gradient(100deg, #f0c4d0, #ffe6ad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ========================================
+   5. FOTO PROFIL
+======================================== */
+.foto-profil {
+    width: 240px;
+    height: 240px;
+    margin: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 8px solid rgba(255, 255, 255, 0.85);
+
+    background: linear-gradient(145deg, #f6dce4, #b33a5c, #65001c);
+
+    box-shadow:
+        0 0 0 8px rgba(255, 255, 255, 0.08),
+        0 0 35px rgba(232, 199, 121, 0.3),
+        0 20px 55px rgba(15, 5, 35, 0.35);
+
+    animation: melayang 3s ease-in-out infinite;
+}
+
+.foto-kecil {
+    width: 145px;
+    height: 145px;
+    font-size: initial;
+    border-width: 6px;
+}
+
+@keyframes melayang {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* ========================================
+   6. TOMBOL
+======================================== */
+.btn-ungu {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+
+    background: linear-gradient(110deg, #65001c, #a3294d, #d17a92);
+    box-shadow: 0 8px 20px rgba(128, 0, 32, 0.25);
+    transition: 0.3s;
+}
+
+.btn-ungu:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(128, 0, 32, 0.35);
+}
+
+.btn-outline-light {
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   7. KARTU BERANDA
+======================================== */
+.kartu {
+    display: block;
+    height: 100%;
+    padding: 25px;
+    border: 1px solid rgba(128, 0, 32, 0.1);
+    border-radius: 22px;
+    color: var(--teks);
+
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 10px 30px rgba(69, 32, 50, 0.07);
+
+    backdrop-filter: blur(8px);
+    transition: 0.35s ease;
+}
+
+.kartu:hover {
+    color: var(--teks);
+    transform: translateY(-7px);
+    border-color: rgba(128, 0, 32, 0.25);
+    box-shadow: 0 18px 35px rgba(69, 32, 50, 0.15);
+}
+
+.kartu h5 {
+    margin-top: 18px;
+    font-weight: 700;
+    color: var(--ungu);
+}
+
+.kartu p {
+    min-height: 65px;
+    color: var(--redup);
+    font-size: 0.9rem;
+}
+
+.kartu span:last-child {
+    color: var(--ungu);
+    font-weight: 600;
+}
+
+/* Ikon kartu */
+.ikon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #f9e8ed, #efd0da);
+    font-size: 1.5rem;
+}
+
+/* ========================================
+   8. HALAMAN DALAM
+======================================== */
+.halaman {
+    min-height: 75vh;
+    padding-top: 65px;
+    padding-bottom: 75px;
+}
+
+.teks-redup {
+    color: var(--redup);
+}
+
+.warna-ungu {
+    color: var(--ungu);
+}
+
+.kotak {
+    height: 100%;
+    padding: 30px;
+    border: 1px solid rgba(128, 0, 32, 0.1);
+    border-radius: 23px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 12px 35px rgba(50, 16, 40, 0.07);
+    backdrop-filter: blur(8px);
+    transition: 0.3s ease;
+}
+
+.kotak:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(83, 0, 21, 0.12);
+}
+
+.kotak hr {
+    border-color: #ead3dc;
+}
+
+.badge-ungu {
+    display: inline-block;
+    margin: 3px;
+    padding: 7px 13px;
+    border-radius: 50px;
+    background: #f6e5e9;
+    color: #800020;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.link-kembali {
+    color: var(--ungu);
+    font-weight: 600;
+}
+
+.link-kembali:hover {
+    color: #b33a5c;
+}
+
+/* ========================================
+   9. KEAHLIAN
+======================================== */
+.kartu-keahlian {
+    transition: transform 0.3s ease;
+}
+
+.kartu-keahlian:hover {
+    transform: translateY(-5px);
+}
+
+.progress {
+    height: 8px;
+    margin: 17px 0 8px;
+    border-radius: 20px;
+    background: #f0dce2;
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #65001c, #d17a92);
+}
+
+/* ========================================
+   10. FORMULIR
+======================================== */
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-control {
+    padding: 12px 14px;
+    border: 1px solid #e5cbd3;
+    border-radius: 12px;
+}
+
+.form-control:focus {
+    border-color: #b33a5c;
+    box-shadow: 0 0 0 0.2rem rgba(128, 0, 32, 0.15);
+}
+
+.message-success {
+    color: #15803d;
+    font-weight: 600;
+}
+
+.message-error {
+    color: #b91c1c;
+    font-weight: 600;
+}
+
+/* ========================================
+   11. HALAMAN LOGIN
+======================================== */
+.halaman-login {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 15% 20%, #a3294d 0, transparent 30%),
+        radial-gradient(circle at 85% 85%, #d17a92 0, transparent 25%),
+        linear-gradient(130deg, #2b0614, #65001c);
+}
+
+.login-wrapper {
+    min-height: 75vh;
+    display: grid;
+    place-items: center;
+    padding: 45px 20px;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 470px;
+    padding: 35px;
+    border-radius: 25px;
+    background: white;
+    box-shadow: 0 25px 70px rgba(15, 5, 20, 0.35);
+}
+
+.login-box h1 {
+    color: #65001c;
+}
+
+.login-box .ikon {
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   12. FOOTER
+======================================== */
+.footer {
+    padding: 22px 15px;
+    text-align: center;
+    color: #f8e4e9;
+    background: linear-gradient(110deg, #2b0614, #65001c);
+    font-size: 0.85rem;
+}
+
+.footer p {
+    margin: 3px 0;
+}
+
+/* ========================================
+   13. RESPONSIF UNTUK HP
+======================================== */
+@media (max-width: 767px) {
+    .hero {
+        padding: 60px 0;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .foto-profil {
+        width: 200px;
+        height: 200px;
+    }
+
+    .foto-kecil {
+        width: 140px;
+        height: 140px;
+    }
+
+    .halaman {
+        padding-top: 45px;
+        padding-bottom: 50px;
+    }
+
+    .kotak {
+        padding: 22px;
+    }
+
+    .login-box {
+        padding: 25px;
+    }
+
+    .hero::before {
+        width: 200px;
+        height: 200px;
+        right: -100px;
+    }
+
+    .hero::after {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+/* Mengurangi animasi sesuai pengaturan aksesibilitas */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===== BACKGROUND MARUN DEKORATIF ===== */
+
+body {
+    background-color: #fff8f7;
+    background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(171, 47, 82, 0.16), transparent 35%),
+        radial-gradient(ellipse at 90% 70%, rgba(225, 174, 139, 0.22), transparent 35%);
+    background-attachment: fixed;
+}
+
+/* Cahaya bergerak di seluruh halaman */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+    filter: blur(15px);
+}
+
+body::before {
+    top: 15%;
+    left: -120px;
+    background: radial-gradient(circle, #bd6480, transparent 70%);
+    animation: cahayaKiri 9s ease-in-out infinite alternate;
+}
+
+body::after {
+    right: -120px;
+    bottom: 5%;
+    background: radial-gradient(circle, #d7a16f, transparent 70%);
+    animation: cahayaKanan 11s ease-in-out infinite alternate;
+}
+
+/* Pastikan isi halaman tetap berada di atas background */
+main,
+section,
+footer,
+.nav-ungu,
+.hero,
+.halaman {
+    position: relative;
+}
+
+/* Hiasan lingkaran di setiap bagian halaman */
+.halaman::before,
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(128, 25, 57, 0.16);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: putarLingkaran 14s linear infinite;
+}
+
+/* Hiasan lingkaran putus-putus */
+.halaman::after,
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    width: 55px;
+    height: 55px;
+    border: 2px dashed rgba(128, 25, 57, 0.22);
+    border-radius: 18px;
+    pointer-events: none;
+    animation: kotakMengambang 5s ease-in-out infinite alternate;
+}
+
+/* ===== KARTU PROFIL, PENDIDIKAN, DAN LAINNYA ===== */
+
+.kartu,
+.kartu-keahlian,
+.kotak,
+.login-box {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(128, 25, 57, 0.12);
+    box-shadow: 0 10px 30px rgba(89, 17, 42, 0.07);
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+/* Garis marun di bagian atas kartu */
+.kartu::before,
+.kartu-keahlian::before,
+.kotak::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #76152f, #c66b85, #e5bd91);
+}
+
+/* Efek saat kursor diarahkan ke kartu */
+.kartu:hover,
+.kartu-keahlian:hover,
+.kotak:hover {
+    transform: translateY(-8px);
+    border-color: rgba(128, 25, 57, 0.35);
+    box-shadow: 0 18px 40px rgba(89, 17, 42, 0.15);
+}
+
+/* Ikon lebih menarik */
+.ikon {
+    transition: transform 0.35s ease;
+}
+
+.kartu:hover .ikon,
+.kartu-keahlian:hover .ikon {
+    transform: rotate(-8deg) scale(1.12);
+}
+
+/* ===== ANIMASI ===== */
+
+@keyframes cahayaKiri {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(120px, 90px);
+    }
+}
+
+@keyframes cahayaKanan {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-100px, -80px);
+    }
+}
+
+@keyframes putarLingkaran {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes kotakMengambang {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(-18px) rotate(15deg);
+    }
+}
+
+/* Tampilan di layar HP */
+@media (max-width: 768px) {
+    .halaman::before,
+    .hero::before {
+        width: 65px;
+        height: 65px;
+        right: 12px;
+    }
+
+    .halaman::after,
+    .hero::after {
+        width: 35px;
+        height: 35px;
+        left: 10px;
+    }
+}
